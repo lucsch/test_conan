@@ -1,1 +1,8 @@
+venv/
+env/
 /build/
+/cmake-build-*
+
+# IDE
+.idea
+
