@@ -3,3 +3,10 @@ boost/1.75.0
 
 [generators]
 cmake
+
+# [options]
+# boost:shared=True
+#
+# [imports]
+# bin, *.dll -> bin
+# lib, *.dylib* -> ./bin

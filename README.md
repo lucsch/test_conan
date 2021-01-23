@@ -31,7 +31,20 @@ Les différentes librairies sont directement renseignées dans le fichier `conan
 
     mkdir build
     cd build
-    conan install ..
+    conan install .. -s build_type=Debug
+
+ou
+
+    conan install .. -s build_type=Release
+
+Selon le paramètre choisi, il faudra choisir la configuration correspondante pour le build sinon nous 
+aurons des problèmes avec MT/ MD/
+
+Release fonctionne avec : 
+
+ - Release
+ - RelWithDebInfo
+
 
 ## créer le projet
 
@@ -40,7 +53,7 @@ Les différentes librairies sont directement renseignées dans le fichier `conan
     cmake .. -G "Visual Studio 16 2019" -A x64
     cmake --build . --config RelWithDebInfo
 
-    (Visiblement un problème en mode Debug avec cette saleté de librairies /MD /MT)
+
 
 ### Unix
 
