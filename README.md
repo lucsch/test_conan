@@ -35,7 +35,17 @@ Les différentes librairies sont directement renseignées dans le fichier `conan
 
 ## créer le projet
 
-    cmake .. -G <nom_du_generateur>
+### Windows
+
+    cmake .. -G "Visual Studio 16 2019" -A x64
+    cmake --build . --config RelWithDebInfo
+
+    (Visiblement un problème en mode Debug avec cette saleté de librairies /MD /MT)
+
+### Unix
+
+    cmake .. 
     cmake --build
+
 
 
