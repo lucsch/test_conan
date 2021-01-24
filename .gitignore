@@ -1,7 +1,7 @@
 venv/
 env/
 /build/
-/cmake-build-*
+cmake-build-*
 .gradle/
 
 # IDE
