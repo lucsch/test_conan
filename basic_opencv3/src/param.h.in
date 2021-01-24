@@ -1,0 +1,9 @@
+
+#ifndef _PARAM_H_H_
+#define _PARAM_H_H_
+
+
+const std::string img1 = "@LINUX_LOGO_PATH@";
+const std::string img2 = "@WINDOWS_LOGO_PATH@";
+
+#endif

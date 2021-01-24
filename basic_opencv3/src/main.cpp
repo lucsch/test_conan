@@ -1,27 +1,58 @@
-#include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgcodecs.hpp>
+/**
+ * @file AddingImagesTrackbar.cpp
+ * @brief Simple linear blender ( dst = alpha*src1 + beta*src2 )
+ * @author OpenCV team
+ */
 
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgcodecs.hpp"
+#include "param.h"
 #include <iostream>
 
 using namespace cv;
+using std::cout;
 
-int main() {
-  std::string image_path = "/Users/lucien/DATA/PROGRAMATION/test_conan/"
-                           "basic_opencv3/src/starry_night.jpg";
-  Mat img = imread(image_path, IMREAD_COLOR);
+/** Global Variables */
+const int alpha_slider_max = 100;
+int alpha_slider;
+double alpha;
+double beta;
 
-  if (img.empty()) {
-    std::cout << "Could not read the image: " << image_path << std::endl;
-    return 1;
+/** Matrices to store images */
+Mat src1;
+Mat src2;
+Mat dst;
+
+static void on_trackbar(int, void *) {
+  alpha = (double)alpha_slider / alpha_slider_max;
+  beta = (1.0 - alpha);
+  addWeighted(src1, alpha, src2, beta, 0.0, dst);
+  imshow("Linear Blend", dst);
+}
+int main(void) {
+  src1 = imread(img1);
+  src2 = imread(img2);
+
+  if (src1.empty()) {
+    cout << "Error loading src1 \n";
+    return -1;
+  }
+  if (src2.empty()) {
+    cout << "Error loading src2 \n";
+    return -1;
   }
 
-  imshow("Display window", img);
-  int k = waitKey(0); // Wait for a keystroke in the window
+  alpha_slider = 0;
 
-  if (k == 's') {
-    imwrite("starry_night.png", img);
-  }
+  namedWindow("Linear Blend", WINDOW_AUTOSIZE); // Create Window
 
+  char TrackbarName[50];
+  sprintf(TrackbarName, "Alpha x %d", alpha_slider_max);
+  createTrackbar(TrackbarName, "Linear Blend", &alpha_slider, alpha_slider_max,
+                 on_trackbar);
+
+  on_trackbar(alpha_slider, 0);
+
+  waitKey(0);
   return 0;
 }
