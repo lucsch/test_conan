@@ -35,7 +35,7 @@ void MainFrame::_create_controls() {
   wxBoxSizer *bSizer1;
   bSizer1 = new wxBoxSizer(wxVERTICAL);
 
-  m_text_ctrl = new wxTextCtrl(this, wxID_ANY);
+  m_text_ctrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
   bSizer1->Add(m_text_ctrl, 1, wxEXPAND, 5);
 
   SetSizer(bSizer1);

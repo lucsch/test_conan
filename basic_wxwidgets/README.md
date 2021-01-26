@@ -19,4 +19,14 @@
     1. Open _basic_wxwidgets_ directory in CLion
     1. Run `cmake` from CLion
     1. Build.
+   
+1. Building from the command line 
+   
+   In _basic_wxwidgets_ directory:
+
+         mkdir build-release && cd build-release
+         conan install ..
+         cmake .. 
+         cmake --build . --config Release
+      
     

@@ -21,10 +21,11 @@ set_source_files_properties(${ICON_PATH} PROPERTIES MACOSX_PACKAGE_LOCATION Reso
 
 #include
 INCLUDE_DIRECTORIES(src)
-ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} MACOSX_BUNDLE
+ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} MACOSX_BUNDLE WIN32
         src/mainapp.cpp
         src/mainframe.cpp
         src/bitmap.cpp
         ${CMAKE_BINARY_DIR}/version.cpp
-        ${ICON_PATH})
+        ${ICON_PATH}
+        src/resource.rc)
 target_link_libraries(${CMAKE_PROJECT_NAME} ${CONAN_LIBS})
