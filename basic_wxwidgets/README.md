@@ -30,3 +30,10 @@
          cmake --build . --config Release
       
     
+## Misc
+
+1. In Linux, run the following command to use C++11: 
+
+        conan profile update settings.compiler.libcxx=libstdc++11 default
+
+2. If using Visual Studio Code, change the build directory in the _Preference User Settings_ for the CMAKE plugins

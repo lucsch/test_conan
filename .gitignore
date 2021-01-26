@@ -6,4 +6,5 @@ cmake-build-*
 
 # IDE
 .idea
+.vscode
 
