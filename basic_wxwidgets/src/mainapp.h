@@ -7,10 +7,9 @@
 #include "wx/wx.h"
 #endif
 
-class MainApp : public wxApp
-{
+class MainApp : public wxApp {
 public:
   virtual bool OnInit();
 };
 
-#endif // TEST_WXWIDGETS_MAINAPP_H
+#endif

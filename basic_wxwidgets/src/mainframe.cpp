@@ -1,11 +1,45 @@
 
 #include "mainframe.h"
+#include "bitmap.h"
+
+extern const char *test_wxwidgets_MAJOR_VERSION;
+extern const char *test_wxwidgets_MINOR_VERSION;
+extern const char *GIT_REV;
+extern const char *GIT_TAG;
+extern const char *GIT_BRANCH;
+extern const char *GIT_NUMBER;
 
 MainFrame::MainFrame(const wxString &title) : wxFrame(NULL, wxID_ANY, title) {
-  // SetIcon(wxICON(sample));
+  wxInitAllImageHandlers();
+  initialize_images();
+  wxIcon frame_icon;
+  frame_icon.CopyFromBitmap(*_img_conan_icon);
+  SetIcon(frame_icon);
+
+  _create_controls();
   _create_menubar();
   _create_statusbar();
   _connect_events();
+
+  wxString myVersion;
+  myVersion << "Version: " << test_wxwidgets_MAJOR_VERSION << "."
+            << test_wxwidgets_MINOR_VERSION << "." << GIT_NUMBER << "\n";
+  myVersion << "Revision: " << GIT_REV << "\n"
+            << "Tag: " << GIT_TAG << "\n"
+            << "Branch: " << GIT_BRANCH;
+  m_text_ctrl->SetValue(myVersion);
+}
+
+void MainFrame::_create_controls() {
+  SetSizeHints(wxDefaultSize, wxDefaultSize);
+  wxBoxSizer *bSizer1;
+  bSizer1 = new wxBoxSizer(wxVERTICAL);
+
+  m_text_ctrl = new wxTextCtrl(this, wxID_ANY);
+  bSizer1->Add(m_text_ctrl, 1, wxEXPAND, 5);
+
+  SetSizer(bSizer1);
+  Layout();
 }
 
 void MainFrame::_connect_events() {
