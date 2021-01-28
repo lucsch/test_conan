@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project("test_wxwidgets")
+project("basic_wxwidgets")
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 11)
