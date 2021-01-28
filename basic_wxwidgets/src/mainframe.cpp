@@ -2,8 +2,8 @@
 #include "mainframe.h"
 #include "bitmap.h"
 
-extern const char *test_wxwidgets_MAJOR_VERSION;
-extern const char *test_wxwidgets_MINOR_VERSION;
+extern const char *basic_wxwidgets_MAJOR_VERSION;
+extern const char *basic_wxwidgets_MINOR_VERSION;
 extern const char *GIT_REV;
 extern const char *GIT_TAG;
 extern const char *GIT_BRANCH;
@@ -22,8 +22,8 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(NULL, wxID_ANY, title) {
   _connect_events();
 
   wxString myVersion;
-  myVersion << "Version: " << test_wxwidgets_MAJOR_VERSION << "."
-            << test_wxwidgets_MINOR_VERSION << "." << GIT_NUMBER << "\n";
+  myVersion << "Version: " << basic_wxwidgets_MAJOR_VERSION << "."
+            << basic_wxwidgets_MINOR_VERSION << "." << GIT_NUMBER << "\n";
   myVersion << "Revision: " << GIT_REV << "\n"
             << "Tag: " << GIT_TAG << "\n"
             << "Branch: " << GIT_BRANCH;
