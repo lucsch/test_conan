@@ -36,40 +36,17 @@ Fichier très simple. En plus de notre code, on doit seulement ajouter :
 
 ## Compilation des exemples
 
-... à faire.
+- [basic_boost](/basic_boost/README.md)
+- [basic_opencv3](/basic_opencv3/README.md)
+- [basic_wxwidgets](/basic_wxwidgets/README.md)
 
-## télécharger les librairies
+## Divers
 
-    mkdir build
-    cd build
-    conan install .. -s build_type=Debug
+1. Sur Linux, il faut activer la commande suivante pour supporter le C++11
 
-ou
+        conan profile update settings.compiler.libcxx=libstdc++11 default
 
-    conan install .. -s build_type=Release
-
-Selon le paramètre choisi, il faudra choisir la configuration correspondante pour le build sinon nous 
-aurons des problèmes avec MT/ MD/
-
-Release fonctionne avec : 
-
- - Release
- - RelWithDebInfo
-
-
-## créer le projet
-
-### Windows
-
-    cmake .. -G "Visual Studio 16 2019" -A x64
-    cmake --build . --config RelWithDebInfo
-
-
-
-### Unix
-
-    cmake .. 
-    cmake --build
+2. Si l'on veut utiliser Visual Studio Code comme IDE, il est possible de changer le répertoire de "build" par défault dans : _Preference User Settings_ pour le plugin CMAKE.
 
 
 

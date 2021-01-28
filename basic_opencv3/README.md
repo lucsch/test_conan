@@ -1,6 +1,4 @@
-# BASIC BOOST
-
-Exemple basic d'un programme en C++ intégrant la librairie BOOST depuis conan center
+# BASIC_OPENCV3
 
 ## activer conan
 
@@ -30,3 +28,4 @@ ou
 
     cmake .. 
     cmake --build
+    

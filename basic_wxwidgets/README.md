@@ -1,39 +1,44 @@
 # BASIC_WXWIDGETS
 
-## Installation
+Exemple simple d'une application wxWidgets. Ce code peut servir de modèle pour d'autres applications. Contrairement à l'exemple _minimal_ de wxWidgets, le code a été séparé en plusieurs fichiers pour les classes **App** et **Frame**.
 
-1. Activate the conan environnement
+## activer conan
 
-        source venv/bin/activate
+    source venv/bin/activate (Unix / OSX)
+    venv\Scripts\activate.bat (Windows)
 
-1. We need to add the Bincraft repository :
+## ajouter le dépôt Bincraft 
 
-        conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+    conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
-1. Install dependancies
+## télécharger les librairies
 
-        mkdir cmake-build-debug && cd cmake-build-debug
-        conan install .. -s build_type=Debug
+    mkdir cmake-build-debug
+    cd cmake-build-debug
+    conan install .. -s build_type=Debug
 
-1. Building 
-    1. Open _basic_wxwidgets_ directory in CLion
-    1. Run `cmake` from CLion
-    1. Build.
-   
-1. Building from the command line 
-   
-   In _basic_wxwidgets_ directory:
+ou
 
-         mkdir build-release && cd build-release
-         conan install ..
-         cmake .. 
-         cmake --build . --config Release
-      
-    
-## Misc
+    mkdir cmake-build-release
+    cd cmake-build-release
+    conan install .. -s build_type=Release
 
-1. In Linux, run the following command to use C++11: 
+## créer le projet
 
-        conan profile update settings.compiler.libcxx=libstdc++11 default
+### Windows
 
-2. If using Visual Studio Code, change the build directory in the _Preference User Settings_ for the CMAKE plugins
+    cmake .. -G "Visual Studio 16 2019" -A x64
+    cmake --build . --config Release 
+    ou
+    cmake --build . --config Debug
+
+### Unix / OSX
+
+    cmake .. 
+    cmake --build
+
+### Avec CLION
+
+1. Ouvrir le réptertoire _basic_wxwidgets_ dans CLion
+1. File > Reload Cmake Project
+1. Build > Build Project
