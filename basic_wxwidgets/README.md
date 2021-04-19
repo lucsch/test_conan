@@ -23,7 +23,12 @@ ou
     cd cmake-build-release
     conan install .. -s build_type=Release
 
-## créer le projet
+## Créer le project et le construire
+C'est possible grace à l'utilisation du fichier 'conanfile.py' en lieu en place du fichier 'conanfile.txt'.
+
+    conan build ..
+
+## Créer le projet (manuellement)
 
 ### Windows
 
