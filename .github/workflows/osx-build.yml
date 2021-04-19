@@ -33,7 +33,7 @@ jobs:
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
           
-          cmake .. -DCMAKE_CXX_COMPILER='$(brew --prefix llvm)/bin/clang'
+          cmake .. -DCMAKE_CXX_COMPILER=$(brew --prefix llvm)/bin/clang
           cmake --build
           cpack -G DragNDrop
 
