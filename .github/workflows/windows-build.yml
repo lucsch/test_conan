@@ -28,16 +28,16 @@ jobs:
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
           conan build ..
-          dir
-          dir ${{github.workspace}}/basic_wxwidgets/bin/bin
-          cp ${{github.workspace}}/basic_wxwidgets/bin/bin/*.exe ${{github.workspace}}
-          dir 
+          # dir
+          # dir ${{github.workspace}}/basic_wxwidgets/bin/bin
+          # cp ${{github.workspace}}/basic_wxwidgets/bin/bin/*.exe ${{github.workspace}}
+          # dir 
 
       - name: upload file
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "*.exe;bin/dist/*.exe;bin/*.exe"
+          file: "*.exe;bin/dist/*.exe;bin/*.exe;basic_wxwidgets/bin/bin/*.exe"
           tags: true
           draft: true

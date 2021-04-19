@@ -45,6 +45,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "*.dmg;bin/*.dmg"
+          file: "*.dmg;bin/*.dmg;basic_wxwidgets/bin/*.dmg"
           tags: true
           draft: true
