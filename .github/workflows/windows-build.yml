@@ -34,6 +34,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "${{github.workspace}}\\basic_wxwidgets\\bin\\bin\\*.exe"
+          file: "${{github.workspace}}\\basic_wxwidgets\\bin\\bin\\basic_wxwidgets.exe"
           tags: true
           draft: true
