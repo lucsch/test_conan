@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir ${{github.workspace}}/basic_wxwidgets/bin
           cd ${{github.workspace}}/basic_wxwidgets/bin
-          conan install ..
+          conan install .. -r lucien.jfrog.io
 
       - name: Build
         run: |
