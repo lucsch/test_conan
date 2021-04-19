@@ -28,7 +28,11 @@ jobs:
         run: |
           mkdir ${{github.workspace}}/basic_wxwidgets/bin
           cd ${{github.workspace}}/basic_wxwidgets/bin
-          conan install .. -r lucien.jfrog.io
+          # download the wxWidgets build for OSX (clang 12.0)
+          # this is a workaround because I wasn't able to download wxWidgets from a repository and 
+          # the dependencies from another one.
+          conan download wxwidgets/3.1.4@bincrafters/stable -r lucien.jfrog.io
+          conan install ..
 
       - name: Build
         run: |
