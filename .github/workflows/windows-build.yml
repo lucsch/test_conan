@@ -25,4 +25,5 @@ jobs:
       - name: Build
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
+          type version.cpp
           conan build ..
