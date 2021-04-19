@@ -1,0 +1,28 @@
+name: basic-wxwidgets-Windows-build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install conan
+        run: |
+          pip install conan
+          conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+
+      - name: Install libraries
+        run: |
+          mkdir ${{github.workspace}}/basic_wxwidgets/bin
+          cd ${{github.workspace}}/basic_wxwidgets/bin
+          conan install ..
+
+      - name: Build
+        run: |
+          cd ${{github.workspace}}/basic_wxwidgets/bin
+          conan build ..
