@@ -27,12 +27,14 @@ jobs:
         run: |
           mkdir ${{github.workspace}}/basic_wxwidgets/bin
           cd ${{github.workspace}}/basic_wxwidgets/bin
-          conan install ..
+          conan install .. -s compiler.version=11.0
 
       - name: Build
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
-          conan build ..
+          
+          cmake .. -DCMAKE_CXX_COMPILER='$(brew --prefix llvm)/bin/clang'
+          cmake --build
           cpack -G DragNDrop
 
       - name: upload file
