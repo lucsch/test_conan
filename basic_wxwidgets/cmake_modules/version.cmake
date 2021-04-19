@@ -1,7 +1,7 @@
 
 
 
-execute_process(COMMAND git log --pretty=format:'%h' -n 1
+execute_process(COMMAND git describe --always --dirty=+
         OUTPUT_VARIABLE GIT_REV
         ERROR_QUIET)
 
@@ -16,9 +16,6 @@ if ("${GIT_REV}" STREQUAL "")
     set(GIT_NUMBER "N/A")
 else ()
     execute_process(
-            COMMAND bash -c "git diff --quiet --exit-code || echo +"
-            OUTPUT_VARIABLE GIT_DIFF)
-    execute_process(
             COMMAND git describe --exact-match --tags
             OUTPUT_VARIABLE GIT_TAG ERROR_QUIET)
     execute_process(
@@ -27,10 +24,8 @@ else ()
     execute_process(
             COMMAND git rev-list HEAD --count
             OUTPUT_VARIABLE GIT_NUMBER)
-
     string(STRIP "${GIT_REV}" GIT_REV)
-    string(SUBSTRING "${GIT_REV}" 1 7 GIT_REV)
-    string(STRIP "${GIT_DIFF}" GIT_DIFF)
+    # string(SUBSTRING "${GIT_REV}" 1 7 GIT_REV)
     string(STRIP "${GIT_TAG}" GIT_TAG)
     string(STRIP "${GIT_BRANCH}" GIT_BRANCH)
     string(STRIP "${GIT_NUMBER}" GIT_NUMBER)
@@ -39,7 +34,7 @@ endif ()
 set(VERSION
         "const char* ${PROJECT_NAME}_MAJOR_VERSION=\"${${PROJECT_NAME}_MAJOR_VERSION}\";
         const char* ${PROJECT_NAME}_MINOR_VERSION=\"${${PROJECT_NAME}_MINOR_VERSION}\";
-        const char* GIT_REV=\"${GIT_REV}${GIT_DIFF}\";
+        const char* GIT_REV=\"${GIT_REV}\";
         const char* GIT_TAG=\"${GIT_TAG}\";
         const char* GIT_BRANCH=\"${GIT_BRANCH}\";
         const char* GIT_NUMBER=\"${GIT_NUMBER}\";")
@@ -57,3 +52,4 @@ if (NOT "${VERSION}" STREQUAL "${VERSION_}")
 endif ()
 
 message(STATUS "${PROJECT_NAME} Version: ${${PROJECT_NAME}_MAJOR_VERSION}.${${PROJECT_NAME}_MINOR_VERSION}.${GIT_NUMBER}")
+message(STATUS "Revision: ${GIT_REV}")
