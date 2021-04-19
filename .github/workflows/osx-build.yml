@@ -1,4 +1,4 @@
-name: basic-wxwidgets-Windows-build
+name: basic-wxwidgets-OSX-build
 
 on:
   release:
@@ -6,12 +6,17 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
       - name: Install conan
         run: |
@@ -28,13 +33,13 @@ jobs:
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
           conan build ..
-          
+          cpack -G DragNDrop
 
       - name: upload file
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "*.exe;bin/dist/*.exe"
+          file: "*.dmg;bin/*.dmg"
           tags: true
           draft: true

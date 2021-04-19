@@ -29,3 +29,9 @@ ADD_EXECUTABLE(${CMAKE_PROJECT_NAME} MACOSX_BUNDLE WIN32
         ${ICON_PATH}
         src/resource.rc)
 target_link_libraries(${CMAKE_PROJECT_NAME} ${CONAN_LIBS})
+
+install(TARGETS ${PROJECT_NAME}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION bin
+        BUNDLE DESTINATION .)
+include(CPack)
