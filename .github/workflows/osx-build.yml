@@ -22,19 +22,18 @@ jobs:
         run: |
           pip install conan
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+          conan remote add lucien.jfrog.io https://lucien.jfrog.io/artifactory/api/conan/lucien
 
       - name: Install libraries
         run: |
           mkdir ${{github.workspace}}/basic_wxwidgets/bin
           cd ${{github.workspace}}/basic_wxwidgets/bin
-          conan install .. -s compiler.version=11.0
+          conan install ..
 
       - name: Build
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
-          
-          cmake .. -DCMAKE_CXX_COMPILER=$(brew --prefix llvm)/bin/clang
-          cmake --build
+          conan build ..
           cpack -G DragNDrop
 
       - name: upload file
