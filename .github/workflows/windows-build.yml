@@ -25,5 +25,6 @@ jobs:
       - name: Build
         run: |
           cd ${{github.workspace}}/basic_wxwidgets/bin
+          cmake .. -G "Visual Studio 16 2019" -A x64
           type version.cpp
           conan build ..
