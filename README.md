@@ -46,6 +46,11 @@ Fichier très simple. En plus de notre code, on doit seulement ajouter :
 
         conan profile update settings.compiler.libcxx=libstdc++11 default
 
+il faut également installer les outils de développement:
+
+        sudo apt install build-essential
+        sudo apt install libgtk-3-dev
+
 2. Si l'on veut utiliser Visual Studio Code comme IDE, il est possible de changer le répertoire de "build" par défault dans : _Preference User Settings_ pour le plugin CMAKE.
 
 
