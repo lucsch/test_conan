@@ -42,7 +42,7 @@ Fichier très simple. En plus de notre code, on doit seulement ajouter :
 
 ## Divers
 
-1. Sur Linux, il faut activer la commande suivante pour supporter le C++11
+Sur Linux, il faut activer la commande suivante pour supporter le C++11
 
         conan profile update settings.compiler.libcxx=libstdc++11 default
 
@@ -51,7 +51,21 @@ il faut également installer les outils de développement:
         sudo apt install build-essential
         sudo apt install libgtk-3-dev
 
-2. Si l'on veut utiliser Visual Studio Code comme IDE, il est possible de changer le répertoire de "build" par défault dans : _Preference User Settings_ pour le plugin CMAKE.
+Il y a actuellement un problème sous Linux avec la librairies webkit. Conan cherche un paquet qui n'est plus disponible dans les dépots. Si webkit n'est pas nécessaire, il est possible de faire comme suit
+
+1. Dans conan.conf rajouter dans l'onglet général
+
+        sysrequires_mode = disabled
+
+2. Dans conanfile.py rajouter 
+
+        default_options = {"wxwidgets:webview": False}
+
+3. lancer la compilation 
+
+        conan install . -build=missing
+
+Si l'on veut utiliser Visual Studio Code comme IDE, il est possible de changer le répertoire de "build" par défault dans : _Preference User Settings_ pour le plugin CMAKE.
 
 
 
