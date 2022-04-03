@@ -1,0 +1,12 @@
+[requires]
+gdal/3.4.1
+
+[generators]
+cmake
+
+# [options]
+# boost:shared=True
+#
+# [imports]
+# bin, *.dll -> bin
+# lib, *.dylib* -> ./bin
