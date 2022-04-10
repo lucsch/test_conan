@@ -1,11 +1,11 @@
 [requires]
-gdal/3.4.1
+gdal/3.4.1@terranum-conan+gdal/stable
 
 [generators]
 cmake
 
-# [options]
-# boost:shared=True
+[options]
+gdal:with_curl=True
 #
 # [imports]
 # bin, *.dll -> bin
