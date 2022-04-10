@@ -3,11 +3,11 @@ from conans import ConanFile, CMake
 
 class BasicwxWidgets(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = ["wxwidgets/3.1.5@bincrafters/stable"]
+    requires = ["wxwidgets/3.1.6@terranum-conan+wxwidgets/stable"]
     generators = "cmake", "gcc", "txt"
 
     # default_options = {"wxwidgets:shared": True}
-    default_options = {"wxwidgets:webview": False}
+    #default_options = {"wxwidgets:webview": False}
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")  # From bin to bin
